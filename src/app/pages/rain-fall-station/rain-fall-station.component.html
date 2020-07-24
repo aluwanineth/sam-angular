@@ -1,0 +1,34 @@
+<div class="form">
+  <h4>Rainfall Stations</h4>
+  <dx-tree-view
+  id="treeview"
+  [items]="rainfallstations"
+  [width]="340"
+
+  [showCheckBoxesMode]="showCheckBoxesMode"
+  [selectionMode]="selectionMode"
+  [selectNodesRecursive]="selectNodesRecursive"
+  [selectByClick]="selectByClick"
+  (onSelectionChanged)="treeViewSelectionChanged($event)"
+  (onContentReady)="treeViewContentReady($event)"
+>
+  <div *dxTemplate="let item of 'item'">
+      {{ item.stationNumber  +' '+  item.stationName   }}
+  </div>
+</dx-tree-view>
+
+  <div class="selected-container">
+      Selected Rainfall Station
+      <dx-list
+          id="selected-rainfallstation"
+          [width]="400"
+          [height]="200"
+          [items]="selectedrainfallstation"
+          showScrollbar="always"
+      >
+          <dxi-item *ngFor="let item of selectedrainfallstation">
+              {{ item.stationOwner + " " + item.stationNumber  + " " + item.stationName  }}
+          </dxi-item>
+      </dx-list>
+  </div>
+</div>
